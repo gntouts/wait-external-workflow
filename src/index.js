@@ -1,5 +1,3 @@
-console.log("Hello, World!");
-
 const { getInput, setFailed, setOutput } = require('@actions/core');
 
 // Define custom error classes for better error handling
