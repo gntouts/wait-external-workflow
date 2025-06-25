@@ -1,0 +1,31 @@
+name: 'Wait for External Workflow'
+description: 'Waits for the completion of an external Workflow called by current Workflow'
+author: 'Georgios Ntoutsos'
+branding:
+  icon: 'box'
+  color: 'blue'
+
+inputs:
+  parent_run_id:
+    description: 'The run ID of the Workflow run which called the external Workflow'
+    required: true
+  target_repo:
+    description: 'The repository that runs the external Workflow'
+    required: true
+  github_token:
+    description: 'A Github Token with access to the external Workflow'
+    required: true
+  timeout:
+    description: 'The amount of minutes this Action will wait before failing'
+    required: false
+    default: '30'
+
+outputs:
+  child_run_id:
+    description: 'The run ID of the external Workflow'
+  result:
+    description: 'The status of the external Workflow (success | failure)'
+
+runs:
+  using: 'node20'
+  main: 'src/index.js'
